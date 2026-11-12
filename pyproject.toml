@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bt7grouping"
+version = "0.1.0"
+description = "Scan grouping and classification for BT-7 triple-axis spectrometer data"
+readme = "README.md"
+license = {text = "BSD-3-Clause"}
+requires-python = ">=3.9"
+authors = [
+    {name = "NIST Center for Neutron Research"},
+]
+maintainers = [
+    {name = "William Ratcliff", email = "william.ratcliff@nist.gov"},
+]
+keywords = [
+    "neutron scattering",
+    "triple-axis spectrometer",
+    "data grouping",
+    "BT7",
+    "NIST",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[project.urls]
+Homepage = "https://github.com/scattering/bt7grouping"
+Repository = "https://github.com/scattering/bt7grouping.git"
+Issues = "https://github.com/scattering/bt7grouping/issues"
+
+[project.scripts]
+bt7group = "bt7grouping.cli:main"
+
+[project.entry-points."tas_copilot.tools"]
+bt7grouping = "bt7grouping.copilot_plugin"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["bt7grouping*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
